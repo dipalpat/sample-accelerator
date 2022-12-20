@@ -9,6 +9,6 @@ spec:
     ref:
       branch: main
     url: https://github.com/jlafata/sample-accelerator.git
-    secretRef:
-      name: git-secret
+#    secretRef:
+#      name: git-secret
     interval: 10s
