@@ -7,7 +7,7 @@ metadata:
 spec:
   git:
     ref:
-      branch: main
+      branch: fragments
     url: https://github.com/jlafata/sample-accelerator.git
 #    secretRef:
 #      name: git-secret

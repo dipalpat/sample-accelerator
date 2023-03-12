@@ -7,9 +7,9 @@ spec:
   displayName: Select Spring Boot Version
   git:
     ref:
-      branch: main
-    secretRef:
-      name: git-secret
+      branch: fragments
+#    secretRef:
+#      name: git-secret
     url: https://github.com/jlafata/start-spring-accelerator.git
     subPath: accelerator-dependency-source-1.2.1/springboot-version
     interval: 10s
