@@ -10,6 +10,6 @@ spec:
       branch: fragments
 #    secretRef:
 #      name: git-secret
-    url: https://github.com/jlafata/start-spring-accelerator.git
+    url: https://github.com/jlafata/sample-accelerator.git
     subPath: accelerator-dependency-source-1.2.1/messaging-selection
     interval: 10s

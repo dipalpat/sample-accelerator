@@ -47,6 +47,8 @@ to deploy this accelerator via github repository, commit the local-path to githu
 
 `kubectl create secret generic git-secret --namespace accelerator-system --from-literal=username=$GIT_USERNAME --from-literal=password=$GIT_PERSONAL_ACCESS_TOKEN`
     
+`kubectl apply -f accelerator-dependency-deployment-1.2.1`
+
 `kubectl apply -f sample-accelerator-deployment.yaml`
 
 consider reducing the interval for refreshing the repository
