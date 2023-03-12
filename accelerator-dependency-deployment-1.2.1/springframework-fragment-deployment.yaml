@@ -1,0 +1,15 @@
+apiVersion: accelerator.apps.tanzu.vmware.com/v1alpha1
+kind: Fragment
+metadata:
+  name: springframework-version
+  namespace: accelerator-system
+spec:
+  displayName: Select Framework Version
+  git:
+    ref:
+      branch: main
+    secretRef:
+      name: git-secret
+    url: https://github.com/jlafata/start-spring-accelerator.git
+    subPath: accelerator-dependency-source-1.2.1/springframework-version
+    interval: 10s

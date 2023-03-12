@@ -1,0 +1,71 @@
+accelerator:
+  options:
+    - name: databaseSelection
+      inputType: select
+      label: What Database would you like to use
+      choices:
+        - value: "none"
+          text: None
+        - value: "H2"
+          text: H2
+        - value: "Mysql"
+          text: Mysql
+        - value: "Postgres"
+          text: Postgres
+      defaultValue: "H2"
+      required: true
+
+engine:
+  merge:
+    - include: [ "build.gradle" ]
+      chain:
+        - type: ReplaceText
+          condition: "#databaseSelection == 'none'"
+          regex:
+            pattern: "//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'"
+            with: "' '"
+        - type: ReplaceText
+          condition: "#databaseSelection == 'none'"
+          regex:
+            pattern: "//	implementation 'org.springframework.boot:spring-boot-starter-data-rest'"
+            with: "' '"
+        - type: ReplaceText
+          condition: "#databaseSelection != 'none'"
+          regex:
+            pattern: "//	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'"
+            with: "' implementation ''org.springframework.boot:spring-boot-starter-data-jpa'''"
+        - type: ReplaceText
+          condition: "#databaseSelection != 'none'"
+          regex:
+            pattern: "//	implementation 'org.springframework.boot:spring-boot-starter-data-rest'"
+            with: "' implementation ''org.springframework.boot:spring-boot-starter-data-rest'''"
+        - type: ReplaceText
+          condition: "#databaseSelection == 'Mysql'"
+          regex:
+            pattern: "//	runtimeOnly 'com.mysql:mysql-connector-j'"
+            with: "' runtimeOnly ''com.mysql:mysql-connector-j'''"
+        - type: ReplaceText
+          condition: "#databaseSelection != 'Mysql'"
+          regex:
+            pattern: "//	runtimeOnly 'com.mysql:mysql-connector-j'"
+            with: "' '"
+        - type: ReplaceText
+          condition: "#databaseSelection == 'H2'"
+          regex:
+            pattern: "//	runtimeOnly 'com.h2database:h2'"
+            with: "' runtimeOnly ''com.h2database:h2'''"
+        - type: ReplaceText
+          condition: "#databaseSelection != 'H2'"
+          regex:
+            pattern: "//	runtimeOnly 'com.h2database:h2'"
+            with: "' '"
+        - type: ReplaceText
+          condition: "#databaseSelection == 'Postgres'"
+          regex:
+            pattern: "//	runtimeOnly 'org.postgresql:postgresql'"
+            with: "' runtimeOnly ''org.postgresql:postgresql'''"
+        - type: ReplaceText
+          condition: "#databaseSelection != 'Postgres'"
+          regex:
+            pattern: "//	runtimeOnly 'org.postgresql:postgresql'"
+            with: "' '"

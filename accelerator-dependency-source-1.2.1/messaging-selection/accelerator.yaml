@@ -1,0 +1,59 @@
+accelerator:
+  options:
+    - name: messagingSelection
+      inputType: select
+      label: What Streaming Messaging service would you like to use?
+      choices:
+        - value: "none"
+          text: None
+        - value: "RabbitMQ"
+          text: RabbitMQ
+        - value: "Kafka"
+          text: Kafka
+      defaultValue: "Kafka"
+      required: true
+
+engine:
+  merge:
+    - include: [ "build.gradle" ]
+      chain:
+        - type: ReplaceText
+          condition: "#messagingSelection == 'none'  OR #messagingSelection == 'RabbitMQ'"
+          regex:
+            pattern: "//	implementation 'org.springframework.kafka:spring-kafka'"
+            with: "' '"
+        - type: ReplaceText
+          condition: "#messagingSelection == 'none'  OR #messagingSelection == 'RabbitMQ'"
+          regex:
+            pattern: "//	testImplementation 'org.springframework.kafka:spring-kafka-test'"
+            with: "' '"
+        - type: ReplaceText
+          condition: "#messagingSelection == 'Kafka'"
+          regex:
+            pattern: "//	implementation 'org.springframework.kafka:spring-kafka'"
+            with: "' implementation ''org.springframework.kafka:spring-kafka'''"
+        - type: ReplaceText
+          condition: "#messagingSelection == 'Kafka'"
+          regex:
+            pattern: "//	testImplementation 'org.springframework.kafka:spring-kafka-test'"
+            with: "'	testImplementation ''org.springframework.kafka:spring-kafka-test'''"
+        - type: ReplaceText
+          condition: "#messagingSelection == 'none' OR #messagingSelection == 'Kafka'"
+          regex:
+            pattern: "//	implementation 'org.springframework.boot:spring-boot-starter-amqp'"
+            with: "' '"
+        - type: ReplaceText
+          condition: "#messagingSelection == 'none' OR #messagingSelection == 'Kafka'"
+          regex:
+            pattern: "//	testImplementation 'org.springframework.amqp:spring-rabbit-test'"
+            with: "' '"
+        - type: ReplaceText
+          condition: "#messagingSelection == 'RabbitMQ' "
+          regex:
+            pattern: "//	implementation 'org.springframework.boot:spring-boot-starter-amqp'"
+            with: "' implementation ''org.springframework.boot:spring-boot-starter-amqp'''"
+        - type: ReplaceText
+          condition: "#messagingSelection == 'RabbitMQ'"
+          regex:
+            pattern: "//	testImplementation 'org.springframework.amqp:spring-rabbit-test'"
+            with: "' testImplementation ''org.springframework.amqp:spring-rabbit-test'''"

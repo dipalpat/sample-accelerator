@@ -1,0 +1,39 @@
+accelerator:
+  options:
+    - name: springBootVersion
+      inputType: select
+      label: Spring Boot version to use
+      choices:
+        - value: "3.0.1 (SNAPSHOT)"
+          text: 3.0.1-SNAPSHOT
+        - value: "3.0.0"
+          text: 3.0.0
+        - value: "2.7.7 (SNAPSHOT)"
+          text: 2.7.7-SNAPSHOT
+        - value: "2.7.6"
+          text: 2.7.6
+      defaultValue: "2.7.6"
+      required: true
+
+engine:
+  let:
+    - name: "springBootVersionReplacementLine"
+      expression: "'id ''org.springframework.boot'' version ' + #springBootVersion + ''''"
+    - name: "springDependencyManagementVersionReplacementLine"
+      expression: "'id ''io.spring.dependency-management'' version ''1.0.15-RELEASE'''"
+  merge:
+    - include: [ "build.gradle" ]
+      chain:
+        - type: ReplaceText
+          regex:
+            pattern: "sourceCompatibility = .*"
+            with: "'sourceCompatibility = ''' + #javaVersion + ''''"
+        - type: ReplaceText
+          substitutions:
+            - text: "id 'org.springframework.boot' version '3.0.0'"
+              with: "#springBootVersionReplacementLine"
+        - type: ReplaceText
+          condition: "#springBootVersion == '2.7.6' or #springBootVersion == '2.7.7 (SNAPSHOT)'"
+          regex:
+            pattern: "id 'io.spring.dependency-management' version '1.1.0'"
+            with: "#springDependencyManagementVersionReplacementLine"

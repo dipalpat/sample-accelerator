@@ -1,0 +1,23 @@
+accelerator:
+  options:
+    - name: includeWebClient
+      inputType: checkbox
+      label: Include Web Client
+      display: false
+      dataType: boolean
+      defaultValue: false
+
+engine:
+  merge:
+  - include: [ "build.gradle" ]
+    chain:
+      - type: ReplaceText
+        condition: "#includeWebClient"
+        regex:
+          pattern: "//	implementation 'org.springframework.boot:spring-boot-starter-web'"
+          with: "' implementation ''org.springframework.boot:spring-boot-starter-web'''"
+      - type: ReplaceText
+        condition: "not #includeWebClient"
+        regex:
+          pattern: "//	implementation 'org.springframework.boot:spring-boot-starter-web'"
+          with: "' '"
