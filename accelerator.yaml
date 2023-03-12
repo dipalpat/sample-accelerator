@@ -20,7 +20,7 @@ engine:
 #variable compute
     let:
     - name: "newPackageName"
-      expression: "'com.morganstanley.'+#projectName.replaceAll('-','')"
+      expression: "'com.mydomainname.'+#projectName.replaceAll('-','')"
 
 #transformation
     merge:
@@ -74,7 +74,7 @@ engine:
         - type: OpenRewriteRecipe
           recipe: org.openrewrite.java.ChangePackage
           options:
-            oldPackageName: "'com.morganstanley.projectname'"
+            oldPackageName: "'com.mydomainname.projectname'"
             newPackageName: "#newPackageName"
 
 

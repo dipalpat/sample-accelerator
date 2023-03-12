@@ -1,4 +1,4 @@
-package com.morganstanley.projectname;
+package com.mydomainname.projectname;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.morganstanley.projectname;
+package com.mydomainname.projectname;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
