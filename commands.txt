@@ -4,17 +4,6 @@ kubetcl apply accelerator resource
 
 push changes to git repo
 
-
-####### Iterate by pushing to image registry
-
-docker login gcr.io
-
-create secret with gcr.io credentials in accelerator-system namespace
-
-tanzu accelerator create test-spring-petclinic -n accelerator-system --local-path . --display-name=test --source-image gcr.io/pa-dpatel/accelerator/test-sample-acc --secret-ref acc-credentials --interval 3s
-
-tanzu accelerator push --local-path . --source-image gcr.io/pa-dpatel/accelerator/test-sample-acc
-
 ####### Generate from Local 
 
 tanzu acc generate-from-local --accelerator-path test-gen-local=./ --options-file=./options.json --server-url=http://accelerator.tap.xploretanzu.com -o=./test --force
