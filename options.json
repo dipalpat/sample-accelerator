@@ -1,0 +1,7 @@
+{
+"javaVersion": "19",
+"springBootVersion": "2.7.6",
+"includeWebClient": false,
+"databaseSelection": "PostGres",
+"messagingSelection": "RabbitMQ"
+}
