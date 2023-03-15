@@ -11,4 +11,4 @@ spec:
     url: https://github.com/dipalpat/sample-accelerator.git
 #    secretRef:
 #      name: git-secret
-    interval: 10s
+    interval: 3s
