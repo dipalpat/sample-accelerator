@@ -9,7 +9,7 @@ metadata:
 spec:
   source:
     git:
-      url: https://github.com/jlafata/spring-project-name.git
+      url: https://github.com/dipalpat/spring-project-name.git
       ref:
         branch: main
 

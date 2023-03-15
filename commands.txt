@@ -1,8 +1,4 @@
-####### Iterate by pushing to git repository
 
-kubetcl apply accelerator resource
-
-push changes to git repo
 
 ####### Generate from Local 
 
