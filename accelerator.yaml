@@ -1,5 +1,5 @@
 accelerator:
-  displayName: Start Spring Accelerator
+  displayName: Demo Spring Accelerator
   description: Experimental Accelerator the replicates The Spring Initializer functionality (for approved application architectures)
   iconUrl: https://raw.githubusercontent.com/simple-starters/icons/master/icon-tanzu-light.png
   tags:
