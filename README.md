@@ -20,11 +20,11 @@ export GIT_PERSONAL_ACCESS_TOKEN=[GIT PERSONAL ACCESS TOKEN]
 ```
 Docker login to target registry to push accelerator code to the image repository 
 example:
-    docker login -u %IMAGE_REGISTRY_USERNAME --password-stdin $IMAGE_REGISTRY_SERVER < %IMAGE_REGISTRY_PASSWORD
+    docker login -u $IMAGE_REGISTRY_USERNAME --password-stdin $IMAGE_REGISTRY_SERVER < $IMAGE_REGISTRY_PASSWORD
 Create registry credentials for accelerator resource to pull image source
 
 example: 
-	tanzu secret registry add registry-credentials --username %IMAGE_REGISTRY_USERNAME --password %IMAGE_REGISTRY_PASSWORD --server %IMAGE_REGISTRY_SERVER --namespace accelerator-system
+	tanzu secret registry add acc-credentials --username $IMAGE_REGISTRY_USERNAME --password $IMAGE_REGISTRY_PASSWORD --server $IMAGE_REGISTRY_SERVER --namespace accelerator-system
 
 Change the directory to the accelerator folder you want to iterate on
 
@@ -52,3 +52,5 @@ to deploy this accelerator via github repository, commit the local-path to githu
 `kubectl apply -f sample-accelerator-deployment.yaml`
 
 consider reducing the interval for refreshing the repository
+
+
